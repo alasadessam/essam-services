@@ -1,0 +1,43 @@
+<div class="request-popup" id="requestPopup">
+    <div class="request-box">
+        <h2>طلب خدمة</h2>
+
+        <label>اسم العميل</label>
+        <input type="text" id="reqName" placeholder="اكتب اسمك">
+
+        <label>رقم التواصل</label>
+        <input type="text" id="reqPhone" placeholder="05xxxxxxxx">
+
+        <label>نوع الخدمة</label>
+
+        <select id="reqService" onchange="toggleOtherService()">
+            <option>تصميم نظام</option>
+            <option>قالب جاهز</option>
+            <option>متجر إلكتروني</option>
+            <option>موقع إلكتروني</option>
+            <option value="other">أخرى</option>
+        </select>
+
+        <div id="otherServiceBox" style="display:none;">
+            <label>اذكر نوع الخدمة</label>
+            <input type="text" id="otherService" placeholder="اكتب نوع الخدمة المطلوبة">
+        </div>
+
+        <label>وصف مختصر</label>
+        <textarea id="reqDetails" placeholder="اكتب تفاصيل الخدمة المطلوبة"></textarea>
+
+        <div class="req-buttons">
+            <button class="btn btn-primary" onclick="sendRequest()">إرسال الطلب</button>
+            <button class="btn btn-outline" onclick="closeRequest()">إغلاق</button>
+        </div>
+    </div>
+</div>
+
+<!-- ✔️ نافذة النجاح هنا خارج request-popup -->
+<div class="success-popup" id="successPopup" style="display:none;">
+    <div class="success-box">
+        <h3>تم إرسال طلبك بنجاح</h3>
+        <p>سيتم التواصل معك قريبًا</p>
+        <button onclick="closeSuccess()" class="btn btn-primary">حسناً</button>
+    </div>
+</div>
