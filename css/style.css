@@ -441,3 +441,13 @@ section p {
     from { transform: scale(0.7); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
+.success-box button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #0f0;
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
