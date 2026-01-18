@@ -450,3 +450,67 @@ section p {
         padding: 30px 10px;
     }
 }
+/* ===========================
+   📱 نسخة الجوال — نفس الويب لكن مضبوطة
+   =========================== */
+@media (max-width: 768px) {
+
+    /* الهيدر يبقى أفقي */
+    .navbar {
+        padding: 12px 20px !important;
+        gap: 10px !important;
+    }
+
+    .navbar .logo {
+        font-size: 22px !important;
+    }
+
+    .navbar ul {
+        gap: 18px !important;
+    }
+
+    .navbar ul li a {
+        font-size: 15px !important;
+    }
+
+    /* الهيرو نفس الويب لكن أصغر */
+    .hero {
+        padding: 0 20px !important;
+        background-attachment: scroll !important;
+    }
+
+    .hero h1 {
+        font-size: 38px !important;
+    }
+
+    .hero p {
+        font-size: 18px !important;
+    }
+
+    .btn {
+        font-size: 16px !important;
+        padding: 10px 20px !important;
+    }
+
+    /* البطاقات نفس الويب لكن عرض مناسب */
+    .services-container,
+    .why-container,
+    .products-container,
+    .templates-container {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+        padding: 0 20px !important;
+        gap: 20px !important;
+    }
+
+    .service-card,
+    .why-card,
+    .product-card,
+    .template-card {
+        padding: 22px !important;
+    }
+
+    /* الفوتر */
+    .footer {
+        padding: 20px !important;
+    }
+}
