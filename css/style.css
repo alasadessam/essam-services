@@ -584,3 +584,38 @@ section p {
         padding: 30px 10px;
     }
 }
+@media (max-width: 768px) {
+
+    /* الهيدر الحقيقي */
+    .navbar {
+        padding: 15px 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+        text-align: center !important;
+    }
+
+    .navbar .logo {
+        font-size: 22px !important;
+        font-weight: 800 !important;
+    }
+
+    .navbar ul {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        align-items: center !important;
+    }
+
+    .navbar ul li a {
+        font-size: 16px !important;
+        padding: 8px 0 !important;
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+}
