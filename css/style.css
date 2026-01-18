@@ -498,3 +498,33 @@ section p {
         border-radius: 12px;
     }
 }
+@media (max-width: 768px) {
+
+    /* الهيدر */
+    #navbar {
+        padding: 12px 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        text-align: center;
+    }
+
+    #navbar .logo {
+        font-size: 20px;
+        font-weight: 800;
+    }
+
+    #navbar ul {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 0;
+        margin: 0;
+    }
+
+    #navbar ul li a {
+        font-size: 15px;
+        padding: 6px 0;
+    }
+}
