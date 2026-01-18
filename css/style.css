@@ -33,6 +33,7 @@ body {
 .navbar.scrolled {
     background: rgba(0, 0, 0, 0.65);
     backdrop-filter: blur(14px);
+    box-shadow: 0 0 25px rgba(0,224,161,0.25);
 }
 
 .navbar .logo {
@@ -58,11 +59,7 @@ body {
 .navbar ul li a:hover {
     color: #00E0A1;
 }
-.navbar.scrolled {
-    background: rgba(0,0,0,0.65);
-    backdrop-filter: blur(14px);
-    box-shadow: 0 0 25px rgba(0,224,161,0.25);
-}
+
 /* ---------------- HERO ---------------- */
 
 .hero {
@@ -72,9 +69,12 @@ body {
                 center/cover no-repeat;
     display: flex;
     align-items: center;
-    justify-content: center; /* توسيط المحتوى */
+    justify-content: center;
     padding: 0 40px;
+    backdrop-filter: blur(1.5px);
+    background-attachment: fixed;
 }
+
 .hero::before {
     content: "";
     position: absolute;
@@ -85,11 +85,11 @@ body {
     background: radial-gradient(circle at center, rgba(0,224,161,0.12), transparent 70%);
     pointer-events: none;
 }
+
 .hero-content {
     max-width: 700px;
-    text-align: center; /* توسيط النص */
+    text-align: center;
 }
-
 
 .hero h1 {
     font-size: 60px;
@@ -97,9 +97,9 @@ body {
     line-height: 1.5;
     margin-bottom: 20px;
     text-shadow: 0 0 18px rgba(0, 224, 161, 0.45);
-}
-.hero h1 {
     position: relative;
+    animation: heroTitle 1.2s ease forwards;
+    opacity: 0;
 }
 
 .hero h1::after {
@@ -114,42 +114,16 @@ body {
     z-index: -1;
     filter: blur(35px);
 }
-.hero h1 {
-    animation: heroTitle 1.2s ease forwards;
-    opacity: 0;
-}
 
 @keyframes heroTitle {
-    0% {
-        opacity: 0;
-        transform: translateY(25px);
-        text-shadow: none;
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-        text-shadow: 0 0 18px rgba(0, 224, 161, 0.45);
-    }
-}
-.btn-primary:hover {
-    box-shadow: 0 0 18px rgba(0,224,161,0.6);
+    0% { opacity: 0; transform: translateY(25px); text-shadow: none; }
+    100% { opacity: 1; transform: translateY(0); text-shadow: 0 0 18px rgba(0, 224, 161, 0.45); }
 }
 
-.btn-outline:hover {
-    box-shadow: 0 0 18px rgba(0,224,161,0.6);
-}
-.hero {
-    backdrop-filter: blur(1.5px);
-}
-.hero {
-    background-attachment: fixed;
-}
 .hero p {
     font-size: 24px;
     opacity: 0.9;
     margin-bottom: 35px;
-}
-.hero p {
     text-shadow: 0 0 10px rgba(0,224,161,0.25);
 }
 
@@ -170,6 +144,7 @@ body {
 
 .btn-primary:hover {
     background: #00c98f;
+    box-shadow: 0 0 18px rgba(0,224,161,0.6);
 }
 
 .btn-outline {
@@ -181,7 +156,9 @@ body {
 .btn-outline:hover {
     background: #00E0A1;
     color: #000;
+    box-shadow: 0 0 18px rgba(0,224,161,0.6);
 }
+
 .hero-buttons {
     animation: heroButtons 1.3s ease forwards;
     opacity: 0;
@@ -191,6 +168,7 @@ body {
     0% { opacity: 0; transform: translateY(25px); }
     100% { opacity: 1; transform: translateY(0); }
 }
+
 /* ---------------- TITLES ---------------- */
 
 section h2 {
@@ -232,6 +210,9 @@ section p {
     border: 1px solid #1F1F1F;
     transition: 0.3s;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 0 rgba(0,0,0,0);
 }
 
 .service-card:hover,
@@ -240,43 +221,7 @@ section p {
 .template-card:hover {
     transform: translateY(-10px);
     border-color: #00E0A1;
-    box-shadow: 0 0 25px rgba(0, 224, 161, 0.4);
-}
-
-.icon,
-.why-icon {
-    font-size: 40px;
-    margin-bottom: 15px;
-}
-
-/* ---------------- REVEAL ANIMATION ---------------- */
-
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 0.9s ease;
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ---------------- FOOTER ---------------- */
-
-.footer {
-    text-align: center;
-    padding: 25px;
-    margin-top: 60px;
-    border-top: 1px solid #1F1F1F;
-    opacity: 0.8;
-}
-.service-card,
-.why-card,
-.product-card,
-.template-card {
-    position: relative;
-    overflow: hidden;
+    box-shadow: 0 0 25px rgba(0,224,161,0.35);
 }
 
 .service-card::before,
@@ -299,52 +244,13 @@ section p {
 .template-card:hover::before {
     left: 100%;
 }
-.card-animate {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: cardEnter 0.9s ease forwards;
+
+.icon,
+.why-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
 }
 
-@keyframes cardEnter {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-.service-card,
-.why-card,
-.product-card,
-.template-card {
-    box-shadow: 0 0 0 rgba(0,0,0,0);
-    transition: 0.3s ease;
-}
-
-.service-card:hover,
-.why-card:hover,
-.product-card:hover,
-.template-card:hover {
-    box-shadow: 0 0 25px rgba(0,224,161,0.35);
-}
-.template-img {
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.08);
-}
-.template-card:hover .template-img {
-    transform: scale(1.05);
-    transition: 0.4s ease;
-}
-.product-card::after {
-    content: "جديد";
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: #00E0A1;
-    color: #000;
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 700;
-}
 .why-icon {
     transition: 0.3s ease;
 }
@@ -352,6 +258,19 @@ section p {
 .why-card:hover .why-icon {
     transform: scale(1.2);
 }
+
+/* ---------------- FOOTER ---------------- */
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    margin-top: 60px;
+    border-top: 1px solid #1F1F1F;
+    opacity: 0.8;
+}
+
+/* ---------------- REQUEST POPUP ---------------- */
+
 .request-popup {
     position: fixed;
     top: 0;
@@ -403,6 +322,9 @@ section p {
     justify-content: space-between;
     margin-top: 15px;
 }
+
+/* ---------------- SUCCESS POPUP ---------------- */
+
 .success-popup {
     position: fixed;
     top: 0;
@@ -441,6 +363,7 @@ section p {
     from { transform: scale(0.7); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
+
 .success-box button {
     padding: 10px 20px;
     border: none;
@@ -451,208 +374,79 @@ section p {
     cursor: pointer;
     transition: 0.3s;
 }
-@media (max-width: 768px) {
 
-  @media (max-width: 768px) {
-
-    /* ===========================
-   📱 نسخة الجوال الكاملة
+/* ===========================
+   📱 نسخة الجوال — نظيفة وصحيحة
    =========================== */
+
 @media (max-width: 768px) {
-
-    /* ضبط عام */
-    body {
-        overflow-x: hidden;
-        margin: 0;
-        padding: 0;
-    }
-
-    section {
-        padding: 60px 20px;
-    }
-
-    h1, h2, h3 {
-        text-align: center;
-        line-height: 1.6;
-        margin-bottom: 20px;
-    }
-
-    p {
-        text-align: center;
-        line-height: 1.8;
-        font-size: 15px;
-    }
 
     /* الهيدر */
-    #navbar {
-        padding: 15px 10px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
+    .navbar {
+        padding: 15px 15px !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        text-align: center !important;
     }
 
-    #navbar ul {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        padding: 0;
-        margin: 0;
+    .navbar ul {
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+        align-items: center !important;
     }
 
-    #navbar ul li a {
-        font-size: 16px;
-        padding: 8px 0;
+    .navbar ul li a {
+        font-size: 16px !important;
+        padding: 8px 0 !important;
+        width: 100% !important;
+        text-align: center !important;
     }
 
     /* الهيرو */
-    #hero {
+    .hero {
         padding: 100px 20px 70px;
         text-align: center;
     }
 
-    #hero .hero-content {
-        max-width: 330px;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
+    .hero h1 {
+        font-size: 28px;
     }
 
-    #hero h1 {
-        font-size: 24px;
-        font-weight: 800;
+    .hero p {
+        font-size: 16px;
     }
 
-    #hero p {
-        font-size: 15px;
-    }
-
-    #hero .hero-buttons {
-        display: flex;
+    .hero-buttons {
         flex-direction: column;
         gap: 12px;
     }
 
-    #hero .hero-buttons button {
-        width: 100%;
-        padding: 14px;
-        font-size: 16px;
-        border-radius: 12px;
+    /* البطاقات */
+    .services-container,
+    .why-container,
+    .products-container,
+    .templates-container {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
     }
 
-    /* البطاقات (الخدمات – المنتجات – القوالب) */
-    .cards-grid,
-    .product-grid,
-    .template-grid {
-        display: grid;
-        grid-template-columns: 1fr !important;
-        gap: 25px;
-        justify-items: center;
-    }
-
-    .card,
+    .service-card,
+    .why-card,
     .product-card,
     .template-card {
-        width: 100% !important;
-        max-width: 350px;
-        padding: 20px;
-        border-radius: 14px;
-    }
-
-    /* لماذا نحن */
-    .whyus-box {
-        width: 100%;
         max-width: 350px;
         margin: auto;
-        margin-bottom: 25px;
-        padding: 20px;
-        border-radius: 14px;
     }
 
     /* نافذة الطلب */
     .request-box {
         width: 90% !important;
-        margin: auto;
         padding: 20px;
-        border-radius: 14px;
     }
 
     /* الفوتر */
-    #footer {
-        text-align: center;
+    .footer {
         padding: 30px 10px;
-    }
-}
-@media (max-width: 768px) {
-
-    /* الهيدر الحقيقي */
-    .navbar {
-        padding: 15px 10px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 12px !important;
-        text-align: center !important;
-    }
-
-    .navbar .logo {
-        font-size: 22px !important;
-        font-weight: 800 !important;
-    }
-
-    .navbar ul {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 10px !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        width: 100% !important;
-        align-items: center !important;
-    }
-
-    .navbar ul li a {
-        font-size: 16px !important;
-        padding: 8px 0 !important;
-        display: block !important;
-        width: 100% !important;
-        text-align: center !important;
-    }
-}
-/* ===========================
-   📱 نسخة الجوال للهيدر
-   =========================== */
-@media (max-width: 768px) {
-
-    .navbar {
-        padding: 15px 10px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 12px !important;
-        text-align: center !important;
-    }
-
-    .navbar .logo {
-        font-size: 22px !important;
-        font-weight: 800 !important;
-    }
-
-    .navbar ul {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 10px !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        width: 100% !important;
-        align-items: center !important;
-    }
-
-    .navbar ul li a {
-        font-size: 16px !important;
-        padding: 8px 0 !important;
-        display: block !important;
-        width: 100% !important;
-        text-align: center !important;
     }
 }
