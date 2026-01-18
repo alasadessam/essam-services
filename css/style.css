@@ -575,3 +575,45 @@ section p {
         padding: 25px 10px;
     }
 }
+/* ===========================
+   📱 ضبط الهيدر للجوال
+   =========================== */
+@media (max-width: 768px) {
+
+    /* الحاوية الأساسية للهيدر */
+    #navbar {
+        padding: 12px 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        background: rgba(0,0,0,0.4);
+        backdrop-filter: blur(6px);
+    }
+
+    /* اللوجو */
+    #navbar .logo {
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
+    /* قائمة الروابط */
+    #navbar ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        align-items: center;
+    }
+
+    #navbar ul li a {
+        font-size: 16px;
+        padding: 8px 0;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
