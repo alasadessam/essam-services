@@ -451,3 +451,47 @@ section p {
     cursor: pointer;
     transition: 0.3s;
 }
+@media (max-width: 768px) {
+
+    /* الهيرو */
+    #hero {
+        padding: 80px 20px 50px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+    }
+
+    #hero h1 {
+        font-size: 22px;
+        line-height: 1.6;
+        font-weight: 800;
+        margin: 0;
+        max-width: 300px;
+    }
+
+    #hero p {
+        font-size: 15px;
+        line-height: 1.7;
+        margin: 0;
+        max-width: 320px;
+    }
+
+    #hero .hero-btn,
+    #hero button {
+        width: 100%;
+        max-width: 260px;
+        padding: 14px 20px;
+        font-size: 16px;
+        border-radius: 12px;
+        margin-top: 10px;
+    }
+
+    /* navbar */
+    #navbar {
+        padding: 15px 10px;
+        gap: 12px;
+    }
+}
