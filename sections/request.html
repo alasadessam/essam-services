@@ -1,39 +1,48 @@
+<!-- نافذة طلب الخدمة -->
 <div class="request-popup" id="requestPopup">
     <div class="request-box">
         <h2>طلب خدمة</h2>
 
-        <label>اسم العميل</label>
-        <input type="text" id="reqName" placeholder="اكتب اسمك">
+        <form id="serviceForm">
 
-        <label>رقم التواصل</label>
-        <input type="text" id="reqPhone" placeholder="05xxxxxxxx">
+            <!-- مفتاح Web3Forms -->
+            <input type="hidden" name="access_key" value="1f3b2fdc-7941-4cd0-88c1-1e720971be3d">
+            <input type="hidden" name="subject" value="طلب خدمة جديد من موقع ESSAM">
+            <input type="hidden" name="from_name" value="ESSAM WEBSITE">
 
-        <label>نوع الخدمة</label>
+            <label>اسم العميل</label>
+            <input type="text" name="name" placeholder="اكتب اسمك" required>
 
-        <select id="reqService" onchange="toggleOtherService()">
-            <option>تصميم نظام</option>
-            <option>قالب جاهز</option>
-            <option>متجر إلكتروني</option>
-            <option>موقع إلكتروني</option>
-            <option value="other">أخرى</option>
-        </select>
+            <label>رقم التواصل</label>
+            <input type="text" name="phone" placeholder="05xxxxxxxx" required>
 
-        <div id="otherServiceBox" style="display:none;">
-            <label>اذكر نوع الخدمة</label>
-            <input type="text" id="otherService" placeholder="اكتب نوع الخدمة المطلوبة">
-        </div>
+            <label>نوع الخدمة</label>
+            <select name="service" id="reqService" onchange="toggleOtherService()">
+                <option value="تصميم نظام">تصميم نظام</option>
+                <option value="قالب جاهز">قالب جاهز</option>
+                <option value="متجر إلكتروني">متجر إلكتروني</option>
+                <option value="موقع إلكتروني">موقع إلكتروني</option>
+                <option value="other">أخرى</option>
+            </select>
 
-        <label>وصف مختصر</label>
-        <textarea id="reqDetails" placeholder="اكتب تفاصيل الخدمة المطلوبة"></textarea>
+            <div id="otherServiceBox" style="display:none;">
+                <label>اذكر نوع الخدمة</label>
+                <input type="text" id="otherService" name="other_service" placeholder="اكتب نوع الخدمة المطلوبة">
+            </div>
 
-        <div class="req-buttons">
-            <button class="btn btn-primary" onclick="sendRequest()">إرسال الطلب</button>
-            <button class="btn btn-outline" onclick="closeRequest()">إغلاق</button>
-        </div>
+            <label>وصف مختصر</label>
+            <textarea name="details" placeholder="اكتب تفاصيل الخدمة المطلوبة" required></textarea>
+
+            <div class="req-buttons">
+                <button type="submit" class="btn btn-primary">إرسال الطلب</button>
+                <button type="button" class="btn btn-outline" onclick="closeRequest()">إغلاق</button>
+            </div>
+
+        </form>
     </div>
 </div>
 
-<!-- ✔️ نافذة النجاح هنا خارج request-popup -->
+<!-- نافذة النجاح -->
 <div class="success-popup" id="successPopup" style="display:none;">
     <div class="success-box">
         <h3>تم إرسال طلبك بنجاح</h3>
@@ -41,48 +50,15 @@
         <button onclick="closeSuccess()" class="btn btn-primary">حسناً</button>
     </div>
 </div>
-<form action="https://api.web3forms.com/submit" method="POST" class="service-form">
-
-    <!-- مفتاح الوصول الخاص بنموذجك -->
-    <input type="hidden" name="access_key" value="1f3b2fdc-7941-4cd0-88c1-1e720971be3d">
-
-    <!-- عنوان الإيميل اللي يوصله الطلب -->
-    <input type="hidden" name="subject" value="طلب خدمة جديد من موقعك">
-    <input type="hidden" name="from_name" value="ESSAM WEBSITE">
-
-    <h2>طلب خدمة</h2>
-
-    <label>اسم العميل</label>
-    <input type="text" name="name" placeholder="اكتب اسمك" required>
-
-    <label>رقم التواصل</label>
-    <input type="text" name="phone" placeholder="05xxxxxxxx" required>
-
-    <label>نوع الخدمة</label>
-    <input type="text" name="service" placeholder="تصميم نظام" required>
-
-    <label>وصف مختصر</label>
-    <textarea name="details" placeholder="اكتب تفاصيل الخدمة المطلوبة" required></textarea>
-
-    <div class="form-buttons">
-        <button type="button" class="btn-outline" onclick="closeForm()">إغلاق</button>
-        <button type="submit" class="btn-primary">إرسال الطلب</button>
-    </div>
-
-</form>
-
-<!-- رسالة نجاح -->
-<div id="success-message" style="display:none; color:#0f0; margin-top:15px;">
-    ✔ تم إرسال الطلب بنجاح، سيتم التواصل معك قريبًا
-</div>
-
-<!-- رسالة خطأ -->
-<div id="error-message" style="display:none; color:#f00; margin-top:15px;">
-    ✖ حدث خطأ أثناء الإرسال، حاول مرة أخرى
-</div>
 
 <script>
-document.querySelector(".service-form").addEventListener("submit", async function(e) {
+function toggleOtherService() {
+    const select = document.getElementById("reqService");
+    const box = document.getElementById("otherServiceBox");
+    box.style.display = select.value === "other" ? "block" : "none";
+}
+
+document.getElementById("serviceForm").addEventListener("submit", async function(e) {
     e.preventDefault();
 
     const form = e.target;
@@ -94,17 +70,19 @@ document.querySelector(".service-form").addEventListener("submit", async functio
     });
 
     if (response.ok) {
-        document.getElementById("success-message").style.display = "block";
-        document.getElementById("error-message").style.display = "none";
+        document.getElementById("requestPopup").style.display = "none";
+        document.getElementById("successPopup").style.display = "flex";
         form.reset();
     } else {
-        document.getElementById("success-message").style.display = "none";
-        document.getElementById("error-message").style.display = "block";
+        alert("حدث خطأ أثناء الإرسال، حاول مرة أخرى");
     }
 });
 
-function closeForm() {
-    // هنا تحط كود إغلاق النموذج حسب تصميم موقعك
-    document.querySelector(".service-form").style.display = "none";
+function closeRequest() {
+    document.getElementById("requestPopup").style.display = "none";
+}
+
+function closeSuccess() {
+    document.getElementById("successPopup").style.display = "none";
 }
 </script>
