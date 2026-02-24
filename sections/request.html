@@ -41,3 +41,70 @@
         <button onclick="closeSuccess()" class="btn btn-primary">حسناً</button>
     </div>
 </div>
+<form action="https://api.web3forms.com/submit" method="POST" class="service-form">
+
+    <!-- مفتاح الوصول الخاص بنموذجك -->
+    <input type="hidden" name="access_key" value="1f3b2fdc-7941-4cd0-88c1-1e720971be3d">
+
+    <!-- عنوان الإيميل اللي يوصله الطلب -->
+    <input type="hidden" name="subject" value="طلب خدمة جديد من موقعك">
+    <input type="hidden" name="from_name" value="ESSAM WEBSITE">
+
+    <h2>طلب خدمة</h2>
+
+    <label>اسم العميل</label>
+    <input type="text" name="name" placeholder="اكتب اسمك" required>
+
+    <label>رقم التواصل</label>
+    <input type="text" name="phone" placeholder="05xxxxxxxx" required>
+
+    <label>نوع الخدمة</label>
+    <input type="text" name="service" placeholder="تصميم نظام" required>
+
+    <label>وصف مختصر</label>
+    <textarea name="details" placeholder="اكتب تفاصيل الخدمة المطلوبة" required></textarea>
+
+    <div class="form-buttons">
+        <button type="button" class="btn-outline" onclick="closeForm()">إغلاق</button>
+        <button type="submit" class="btn-primary">إرسال الطلب</button>
+    </div>
+
+</form>
+
+<!-- رسالة نجاح -->
+<div id="success-message" style="display:none; color:#0f0; margin-top:15px;">
+    ✔ تم إرسال الطلب بنجاح، سيتم التواصل معك قريبًا
+</div>
+
+<!-- رسالة خطأ -->
+<div id="error-message" style="display:none; color:#f00; margin-top:15px;">
+    ✖ حدث خطأ أثناء الإرسال، حاول مرة أخرى
+</div>
+
+<script>
+document.querySelector(".service-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const data = new FormData(form);
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: data
+    });
+
+    if (response.ok) {
+        document.getElementById("success-message").style.display = "block";
+        document.getElementById("error-message").style.display = "none";
+        form.reset();
+    } else {
+        document.getElementById("success-message").style.display = "none";
+        document.getElementById("error-message").style.display = "block";
+    }
+});
+
+function closeForm() {
+    // هنا تحط كود إغلاق النموذج حسب تصميم موقعك
+    document.querySelector(".service-form").style.display = "none";
+}
+</script>
