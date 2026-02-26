@@ -1,11 +1,11 @@
-<!-- نافذة طلب الخدمة -->
-<div class="request-popup" id="requestPopup">
+<!-- نافذة طلب الخدمة (النافذة المنبثقة) -->
+<div class="request-popup" id="requestPopup" style="display:none;">
     <div class="request-box">
         <h2>طلب خدمة</h2>
 
         <form id="serviceForm">
 
-            <!-- مفتاح Web3Forms -->
+            <!-- Web3Forms -->
             <input type="hidden" name="access_key" value="1f3b2fdc-7941-4cd0-88c1-1e720971be3d">
             <input type="hidden" name="subject" value="طلب خدمة جديد من موقع ESSAM">
             <input type="hidden" name="from_name" value="ESSAM WEBSITE">
@@ -16,7 +16,7 @@
             <label>رقم التواصل</label>
             <input type="text" name="phone" placeholder="05xxxxxxxx" required>
 
-            <label>نوع الخدمة</label>
+            <label>نوع الخدمة المطلوبة</label>
             <select name="service" id="reqService" onchange="toggleOtherService()">
                 <option value="تصميم نظام">تصميم نظام</option>
                 <option value="قالب جاهز">قالب جاهز</option>
@@ -43,8 +43,23 @@
 </div>
 
 <!-- نافذة النجاح -->
-<div class="success-popup" id="successPopup" style="display:none;">
-    <div class="success-box">
+<div class="success-popup" id="successPopup" style="
+    display:none;
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.7);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+">
+    <div class="success-box" style="
+        background:#fff;
+        padding:25px;
+        border-radius:10px;
+        text-align:center;
+        max-width:300px;
+    ">
         <h3>تم إرسال طلبك بنجاح</h3>
         <p>سيتم التواصل معك قريبًا</p>
         <button onclick="closeSuccess()" class="btn btn-primary">حسناً</button>
